@@ -1,0 +1,65 @@
+
+                    <!DOCTYPE html>
+                    <html lang="es">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Redireccionando con ACORTA</title>
+                        <style>
+                            body {
+                                font-family: 'Inter', sans-serif;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                min-height: 100vh;
+                                margin: 0;
+                                background-color: #f0f2f5;
+                                text-align: center;
+                            }
+                            h2 {
+                                font-size: 2em;
+                                color: #333;
+                                margin-bottom: 15px;
+                            }
+                            p {
+                                font-size: 1.2em;
+                                color: #555;
+                            }
+                            #countdown {
+                                font-size: 1.5em;
+                                font-weight: bold;
+                                color: #FF6B6B;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>HOLA, SOY LIBRIURL ACORTA</h2>
+                        <p>VAS A SER REDIRIGIDO EN <span id="countdown">10</span> segundos.</p>
+
+                        <script>
+                            let countdown = 10;
+                            const countdownElement = document.getElementById('countdown');
+                            // La URL de destino se incrusta directamente en este HTML
+                            const targetUrl = "https://sites.google.com/view/librillaia/ultimos-modelos-destacados/html"; // Usamos JSON.stringify para escapar correctamente
+
+                            function updateCountdown() {
+                                countdownElement.textContent = countdown;
+                                if (countdown === 0) {
+                                    if (targetUrl) {
+                                        window.location.replace(targetUrl); // Redirige a la URL original
+                                    } else {
+                                        console.error('No se encontró la URL de destino.');
+                                    }
+                                } else {
+                                    countdown--;
+                                    setTimeout(updateCountdown, 1000); // Llama a la función cada segundo
+                                }
+                            }
+
+                            // Inicia el temporizador cuando la página se carga
+                            window.onload = updateCountdown;
+                        </script> <!-- ¡Importante: se ha escapado la barra para evitar el error! -->
+                    </body>
+                    </html>
+                
